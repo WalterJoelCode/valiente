@@ -1,8 +1,8 @@
 {
-  "name": "atelier-ko-astro-theme",
+  "name": "freddy-valiente-fotografias",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://atelier-ko-topaz.vercel.app/",
+  "homepage": "https://freddyvaliente.github.io/freddyvaliente/",
   "type": "module",
   "scripts": {
     "dev": "astro dev",

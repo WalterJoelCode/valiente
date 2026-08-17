@@ -1,17 +1,16 @@
 ---
-name: Tora Desk
-collection: Collection 02 — Tables
-category: Tables
-material: Walnut
-price: 1980
-shortDescription: Architectural Walnut Desk
-dimensions: L 130 × W 62 × H 74 cm
-finish: Natural Oil
-leadTime: 10 Weeks
+name: Sesión editorial
+collection: Estudio Creativo — Editorial
+category: Estudio
+material: Dirección creativa
+shortDescription: Concepto, estilo y una narrativa visual
+dimensions: 90–120 minutos
+finish: Selección editorial
+leadTime: 10–12 días
 images:
   - ../../assets/p-tora-1.jpg
   - ../../assets/p-tora-2.jpg
 order: 6
 ---
 
-A study in proportion and restraint. The Tora Desk pairs a generous walnut surface with angular tapered legs and a single whisper-thin drawer — no hardware, only precision. Designed as a quiet architectural anchor for the workspace.
+Una producción con concepto definido, referencias visuales y dirección de principio a fin para artistas, marcas y proyectos personales.

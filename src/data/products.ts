@@ -55,26 +55,3 @@ export function getProductFilters(products: Product[]): {
   };
 }
 
-export function formatPrice(value: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
-
-export function productForJson(product: Product) {
-  return {
-    slug: product.slug,
-    name: product.name,
-    collection: product.collection,
-    category: product.category,
-    material: product.material,
-    price: product.price,
-    shortDescription: product.shortDescription,
-    description: product.description,
-    dimensions: product.dimensions,
-    finish: product.finish,
-    leadTime: product.leadTime,
-  };
-}

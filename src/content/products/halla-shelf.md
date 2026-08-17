@@ -1,17 +1,16 @@
 ---
-name: Halla Shelf
-collection: Collection 03 — Storage
-category: Storage
-material: Oak
-price: 460
-shortDescription: Floating Oak Shelf
-dimensions: L 90 × D 22 × H 4 cm
-finish: Matte Hard-Wax Oil
-leadTime: 3–4 Weeks
+name: Sesión de pareja
+collection: Estudio Creativo — Parejas
+category: Exteriores
+material: Luz natural
+shortDescription: Una historia compartida, sin poses rígidas
+dimensions: 60–90 minutos
+finish: Selección editada
+leadTime: 7–10 días
 images:
   - ../../assets/p-halla-1.jpg
   - ../../assets/p-halla-2.jpg
 order: 5
 ---
 
-A patient shelf. Mounted with concealed brackets that vanish into the wall, the Halla Shelf carries books, ceramics, and afternoon light in equal measure.
+Una caminata, una conversación y dirección mínima para retratar la complicidad de ambos con naturalidad.

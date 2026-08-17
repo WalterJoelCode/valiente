@@ -1,13 +1,12 @@
 ---
-name: Arvid Chair
-collection: Collection 01 — Seating
-category: Seating
-material: Ash
-price: 840
-shortDescription: Curved Ash
-dimensions: W 54 × D 56 × H 92 cm
-finish: Soap-Treated
-leadTime: 6–8 Weeks
+name: Retrato en exteriores
+collection: Estudio Creativo — Exteriores
+category: Exteriores
+material: Luz natural
+shortDescription: Retratos en una locación con significado
+dimensions: 60–90 minutos
+finish: Selección editada
+leadTime: 7–10 días
 images:
   - ../../assets/p-arvid-3.jpg
   - ../../assets/p-arvid-1.jpg
@@ -15,4 +14,4 @@ images:
 order: 2
 ---
 
-A single sculpted shell of steam-bent ash, the Arvid Chair traces the silhouette of the body. Each chair is shaped over a custom form and finished in our Småland workshop.
+Elegimos una locación, la mejor hora de luz y un recorrido sencillo para crear retratos espontáneos que respiren el ambiente del lugar.
