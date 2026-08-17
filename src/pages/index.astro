@@ -9,11 +9,12 @@ import { sitePath } from "@/utils/paths.js";
 const products = await getProducts();
 const featured = ["arvid-chair", "low-plinth-table", "tora-desk"]
   .map((slug) => products.find((product) => product.slug === slug))
-  .filter(Boolean);
+  .filter((product) => product !== undefined);
+const [photoService, studioService] = featured;
 const solo = products.find((product) => product.slug === "monolith-bench");
 
-if (!solo) {
-  throw new Error("Missing required featured product: monolith-bench");
+if (!photoService || !studioService || !solo) {
+  throw new Error("Missing one or more required featured products");
 }
 ---
 
@@ -137,7 +138,7 @@ if (!solo) {
 
     <div class="grid gap-8 md:grid-cols-2">
       <article class="group relative min-h-[520px] overflow-hidden rounded-[min(1vw,16px)] bg-paper">
-        <Image src={featured[0].images[0]} alt="Cobertura fotográfica de bodas y eventos" width={1200} height={1400} format="webp" loading="eager" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]" />
+        <Image src={photoService.images[0]} alt="Cobertura fotográfica de bodas y eventos" width={1200} height={1400} format="webp" loading="eager" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]" />
         <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
         <div class="absolute inset-x-0 bottom-0 space-y-4 p-7 text-white md:p-10">
           <p class="text-[10px] uppercase tracking-[0.3em] text-white/70">Bodas · Eventos</p>
@@ -148,7 +149,7 @@ if (!solo) {
       </article>
 
       <article class="group relative min-h-[520px] overflow-hidden rounded-[min(1vw,16px)] bg-paper">
-        <Image src={featured[1].images[0]} alt="Sesión fotográfica de estudio y exterior" width={1200} height={1400} format="webp" loading="eager" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]" />
+        <Image src={studioService.images[0]} alt="Sesión fotográfica de estudio y exterior" width={1200} height={1400} format="webp" loading="eager" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]" />
         <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
         <div class="absolute inset-x-0 bottom-0 space-y-4 p-7 text-white md:p-10">
           <p class="text-[10px] uppercase tracking-[0.3em] text-white/70">Estudio · Exteriores</p>
