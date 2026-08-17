@@ -2,11 +2,12 @@
   "name": "freddy-valiente-fotografias",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://freddyvaliente.github.io/freddyvaliente/",
+  "homepage": "https://walterjoelcode.github.io/valiente/",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write ."
   },
