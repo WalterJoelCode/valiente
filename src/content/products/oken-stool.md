@@ -1,17 +1,16 @@
 ---
-name: Oken Stool
-collection: Collection 01 — Seating
-category: Seating
-material: Oak
-price: 320
-shortDescription: Solid White Oak
-dimensions: Ø 32 × H 45 cm
-finish: Matte Hard-Wax Oil
-leadTime: 4–6 Weeks
+name: Retrato esencial
+collection: Estudio Creativo — Retratos
+category: Estudio
+material: Luz controlada
+shortDescription: Una sesión íntima y natural
+dimensions: 60–90 minutos
+finish: Selección editada
+leadTime: 7–10 días
 images:
   - ../../assets/p-oken-1.jpg
   - ../../assets/p-oken-2.jpg
 order: 1
 ---
 
-Designed by our lead craftsman, the Oken stool features traditional wedge-tenon joints that will remain stable for generations. Each piece is hand-finished with a natural wax oil to preserve the breathability of the wood.
+Una sesión personal construida con dirección sencilla, tiempo para conectar y una iluminación que resalta tu presencia sin perder naturalidad.

@@ -10,7 +10,6 @@ const products = defineCollection({
       collection: z.string(),
       category: z.string(),
       material: z.string(),
-      price: z.number().int().nonnegative(),
       shortDescription: z.string(),
       dimensions: z.string(),
       finish: z.string(),

@@ -8,52 +8,51 @@ const { categories: allCategories, materials: allMaterials } = getProductFilters
 ---
 
 <BaseLayout
-  title="The Catalogue — Atelier Kō"
-  description="Browse every piece in the Atelier Kō catalogue. Filter by category and material — solid oak, ash, walnut. Hand-built to order."
+  title="Estudio Creativo — Freddy Fotografías"
+  description="Sesiones fotográficas en estudio y exteriores, creadas con dirección cercana y una estética personal."
 >
   <main id="main-content">
   <section class="mx-auto max-w-screen-xl px-6 pb-12 pt-20 md:pb-16 md:pt-28">
     <p class="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-faded">
       <span class="inline-block h-px w-8 bg-ink/40"></span>
-      The Catalogue
+      Estudio Creativo
     </p>
     <h1 class="max-w-[18ch] text-balance font-serif text-5xl leading-[0.95] md:text-6xl">
-      Every piece, <span class="italic text-accent">made to order.</span>
+      Sesiones de estudio y exterior, <span class="italic text-accent">creadas para ti.</span>
     </h1>
     <p class="mt-6 max-w-[52ch] leading-relaxed text-faded">
-      A small, slow catalogue — six pieces, three materials. Filter to find what fits your room, then we begin by selecting the board.
+      Retratos personales, de pareja, familia o marca realizados en nuestro estudio o en una locación exterior elegida contigo. Cada sesión se prepara con calma y atención al detalle.
     </p>
   </section>
 
   <div class="mx-auto max-w-screen-xl px-6 pb-32">
-    <section class="border-t border-line pb-12 pt-8" aria-label="Catalogue filters">
+    <section class="border-t border-line pb-12 pt-8" aria-label="Filtros de sesiones">
       <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div class="space-y-4">
           <h2 class="text-xs uppercase tracking-[0.25em] text-faded">
-            <span data-catalog-count>{products.length}</span> <span data-catalog-count-label>pieces</span>
+            <span data-catalog-count>{products.length}</span> <span data-catalog-count-label>sesiones</span>
           </h2>
           <div class="flex flex-wrap items-center gap-2" data-filter-group="category">
-            <button class="catalog-chip is-active" type="button" data-filter-value="all" aria-pressed="true">All Pieces</button>
+            <button class="catalog-chip is-active" type="button" data-filter-value="all" aria-pressed="true">Todas las sesiones</button>
             {allCategories.map((category) => <button class="catalog-chip" type="button" data-filter-value={category} aria-pressed="false">{category}</button>)}
           </div>
           <div class="flex flex-wrap items-center gap-2" data-filter-group="material">
-            <button class="catalog-chip is-active" type="button" data-filter-value="all" aria-pressed="true">All Materials</button>
+            <button class="catalog-chip is-active" type="button" data-filter-value="all" aria-pressed="true">Todos los estilos</button>
             {allMaterials.map((material) => <button class="catalog-chip" type="button" data-filter-value={material} aria-pressed="false">{material}</button>)}
           </div>
         </div>
         <label class="flex items-center gap-3 text-xs uppercase tracking-widest text-faded">
-          Sort
+          Ordenar
           <select class="border-b border-line bg-transparent py-1 pr-6 text-ink focus:border-ink focus:outline-none" data-catalog-sort>
-            <option value="featured">Featured</option>
-            <option value="price-asc">Price · Low to High</option>
-            <option value="price-desc">Price · High to Low</option>
+            <option value="featured">Destacadas</option>
+            <option value="name-asc">Nombre · A–Z</option>
           </select>
         </label>
       </div>
     </section>
 
     <p class="hidden py-32 text-center font-serif text-2xl text-faded" data-catalog-empty>
-      No pieces match that combination.
+      No hay sesiones que coincidan con esta combinación.
     </p>
     <div class="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3" data-catalog-grid>
       {
@@ -62,7 +61,7 @@ const { categories: allCategories, materials: allMaterials } = getProductFilters
             data-catalog-item
             data-category={product.category}
             data-material={product.material}
-            data-price={product.price}
+            data-name={product.name}
             data-index={index}
           >
             <ProductCard product={product} eager={index < 3} />
@@ -116,8 +115,7 @@ const { categories: allCategories, materials: allMaterials } = getProductFilters
       });
 
       visible.sort((a, b) => {
-        if (sort.value === "price-asc") return Number(a.dataset.price) - Number(b.dataset.price);
-        if (sort.value === "price-desc") return Number(b.dataset.price) - Number(a.dataset.price);
+        if (sort.value === "name-asc") return a.dataset.name.localeCompare(b.dataset.name, "es");
         return Number(a.dataset.index) - Number(b.dataset.index);
       });
 
@@ -128,7 +126,7 @@ const { categories: allCategories, materials: allMaterials } = getProductFilters
       });
 
       countNode.textContent = String(visible.length);
-      countLabel.textContent = visible.length === 1 ? "piece" : "pieces";
+      countLabel.textContent = visible.length === 1 ? "sesión" : "sesiones";
       empty.classList.toggle("hidden", visible.length > 0);
       grid.classList.toggle("hidden", visible.length === 0);
     }

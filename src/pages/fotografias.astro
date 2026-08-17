@@ -1,0 +1,92 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getProducts } from "@/data/products.js";
+import { sitePath } from "@/utils/paths.js";
+
+const products = await getProducts();
+const services = [
+  {
+    title: "Historias de boda",
+    eyebrow: "Bodas",
+    description: "Una cobertura cercana y documental desde los preparativos hasta la celebración, atenta a los gestos que suceden sin aviso.",
+    image: products[0]?.images[0],
+  },
+  {
+    title: "Ceremonias íntimas",
+    eyebrow: "Bodas civiles",
+    description: "El mismo cuidado para celebraciones pequeñas: ceremonia, retratos y los momentos compartidos con las personas más cercanas.",
+    image: products[1]?.images[0],
+  },
+  {
+    title: "Celebraciones que permanecen",
+    eyebrow: "Eventos sociales",
+    description: "Cumpleaños, aniversarios y encuentros familiares narrados con naturalidad, ambiente y atención a cada detalle.",
+    image: products[2]?.images[0],
+  },
+  {
+    title: "La identidad de tu evento",
+    eyebrow: "Eventos corporativos",
+    description: "Cobertura visual de lanzamientos, conferencias y encuentros de marca con imágenes útiles, humanas y coherentes.",
+    image: products[3]?.images[0],
+  },
+].filter((service) => service.image);
+---
+
+<BaseLayout
+  title="Bodas y eventos — Freddy Fotografías"
+  description="Fotografía de bodas y eventos con una mirada documental, sensible y cercana en cada momento."
+  image={services[0]?.image}
+>
+  <main id="main-content">
+    <section class="mx-auto max-w-screen-xl px-6 pb-16 pt-20 md:pb-24 md:pt-28">
+      <p class="mb-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-faded">
+        <span class="inline-block h-px w-8 bg-ink/40"></span>
+        Freddy Fotografías
+      </p>
+      <h1 class="max-w-[18ch] text-balance font-serif text-5xl leading-[0.95] md:text-7xl">
+        Bodas y eventos, <span class="italic text-accent">contados desde dentro.</span>
+      </h1>
+      <p class="mt-8 max-w-[58ch] text-lg leading-relaxed text-faded">
+        Fotografío celebraciones con una mirada documental y cercana. Acompaño el ritmo del día sin interrumpirlo para conservar la emoción, las personas y los pequeños instantes que construyen una historia completa.
+      </p>
+      <a href={sitePath("/contacto#contacto")} class="mt-8 inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-base)] transition-colors hover:bg-accent">
+        Consultar disponibilidad <span aria-hidden="true">→</span>
+      </a>
+    </section>
+
+    <section class="mx-auto max-w-screen-xl px-6 pb-32" aria-labelledby="servicios-title">
+      <div class="mb-12 border-t border-line pt-10">
+        <p class="mb-4 text-[11px] uppercase tracking-[0.3em] text-faded">Coberturas</p>
+        <h2 id="servicios-title" class="max-w-[20ch] text-balance font-serif text-3xl leading-[1.02] md:text-5xl">
+          Cada celebración tiene <span class="italic text-accent">su propio pulso.</span>
+        </h2>
+      </div>
+      <div class="grid gap-x-8 gap-y-16 md:grid-cols-2">
+        {services.map((service, index) => (
+          <article class="group space-y-5">
+            <a href={sitePath("/contacto#contacto")} class="block overflow-hidden rounded-[min(1vw,12px)] bg-paper">
+              <Image src={service.image} alt={`Fotografía de ${service.eyebrow.toLowerCase()} por Freddy Valiente`} width={1200} height={900} format="webp" loading={index < 2 ? "eager" : "lazy"} class="aspect-[4/3] h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]" />
+            </a>
+            <div class="grid gap-3 border-t border-line pt-5 sm:grid-cols-[1fr_2fr]">
+              <p class="text-[10px] uppercase tracking-[0.3em] text-accent">{service.eyebrow}</p>
+              <div class="space-y-3">
+                <h3 class="font-serif text-3xl leading-none">{service.title}</h3>
+                <p class="text-sm leading-relaxed text-faded">{service.description}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="mx-auto mb-32 max-w-screen-xl px-6">
+      <div class="grid items-end gap-8 border-y border-line py-12 md:grid-cols-12">
+        <h2 class="max-w-[20ch] text-balance font-serif text-3xl leading-[1.02] md:col-span-7 md:text-5xl">Hablemos de la celebración que estás preparando.</h2>
+        <div class="md:col-span-5 md:text-right">
+          <a href={sitePath("/contacto#contacto")} class="inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-base)] transition-colors hover:bg-accent">Contactar <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

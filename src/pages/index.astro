@@ -3,7 +3,8 @@ import { Image } from "astro:assets";
 import ProductCard from "@/components/ProductCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import heroImg from "@/assets/atelier-hero.jpg";
-import { formatPrice, getProducts } from "@/data/products.js";
+import { getProducts } from "@/data/products.js";
+import { sitePath } from "@/utils/paths.js";
 
 const products = await getProducts();
 const featured = ["arvid-chair", "low-plinth-table", "tora-desk"]
@@ -17,18 +18,18 @@ if (!solo) {
 ---
 
 <BaseLayout
-  title="Atelier Kō — Furniture, made by hand"
-  description="A small catalogue of seating, tables and storage. Solid oak, ash and walnut, hand-built to order in Småland, Sweden."
+  title="Freddy Fotografías — Bodas, eventos y Estudio Creativo"
+  description="Fotografía de bodas y eventos, junto a sesiones de estudio y exterior creadas con sensibilidad, cercanía e intención."
   image={heroImg}
 >
   <main id="main-content">
-  <h1 class="sr-only">Atelier Kō — hand-carved furniture from the northern woods</h1>
+  <h1 class="sr-only">Freddy Fotografías — bodas, eventos y sesiones creativas</h1>
   <section class="relative overflow-hidden bg-base">
     <div class="md:hidden">
       <div class="aspect-[4/3] w-full">
         <Image
           src={heroImg}
-          alt="Hand-carved sculptural walnut lounge chair in a sunlit atelier"
+          alt="Escena artística iluminada por la luz natural del estudio"
           width={1600}
           height={1280}
           format="webp"
@@ -40,27 +41,26 @@ if (!solo) {
       <div class="space-y-6 px-6 py-12">
         <p class="flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-faded">
           <span class="inline-block h-px w-8 bg-ink/40"></span>
-          Småland, Sweden · Est. 2018
+          Nicaragua · Fotografía de autor
         </p>
         <p class="text-balance font-serif text-4xl leading-[0.95]">
-          Hand-carved pieces
+          Dos formas de contar
           <br />
-          <span class="italic text-accent">from the northern woods.</span>
+          <span class="italic text-accent">historias que permanecen.</span>
         </p>
         <p class="max-w-[48ch] text-pretty leading-relaxed text-faded">
-          A small, slow catalogue of seating, tables and storage — solid oak, ash and walnut, shaped by hand
-          and built to outlast the room they were made for.
+          Bodas y eventos narrados desde dentro, junto a sesiones de estudio y exterior creadas alrededor de cada persona.
         </p>
         <div class="flex flex-col items-start gap-4 pt-2 sm:flex-row sm:items-center">
           <a
-            href="/catalog"
+            href={sitePath("/fotografias")}
             class="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-base)] transition-colors hover:bg-accent"
           >
-            Browse the catalogue
+            Freddy Fotografías
             <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
           </a>
-          <a href="/about" class="text-[11px] uppercase tracking-[0.2em] text-faded transition-colors hover:text-ink">
-            Our workshop →
+          <a href={sitePath("/estudio")} class="text-[11px] uppercase tracking-[0.2em] text-faded transition-colors hover:text-ink">
+            Estudio Creativo →
           </a>
         </div>
       </div>
@@ -69,7 +69,7 @@ if (!solo) {
     <div class="relative hidden h-[88vh] max-h-[920px] min-h-[640px] w-full md:block">
       <Image
         src={heroImg}
-        alt="Hand-carved sculptural walnut lounge chair in a sunlit atelier"
+        alt="Escena artística iluminada por la luz natural del estudio"
         width={1600}
         height={1280}
         format="webp"
@@ -93,51 +93,86 @@ if (!solo) {
         <div class="max-w-[480px] space-y-8">
           <p class="flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-faded">
             <span class="inline-block h-px w-8 bg-ink/40"></span>
-            Småland, Sweden · Est. 2018
+            Nicaragua · Fotografía de autor
           </p>
           <p class="text-balance font-serif text-5xl leading-[0.95] lg:text-6xl">
-            Hand-carved pieces
+            Dos formas de contar
             <br />
-            <span class="italic text-accent">from the northern woods.</span>
+            <span class="italic text-accent">historias que permanecen.</span>
           </p>
           <p class="max-w-[48ch] text-pretty leading-relaxed text-faded md:text-lg">
-            A small, slow catalogue of seating, tables and storage — solid oak, ash and walnut, shaped by hand
-            and built to outlast the room they were made for.
+            Bodas y eventos narrados desde dentro, junto a sesiones de estudio y exterior creadas alrededor de cada persona.
           </p>
           <div class="flex items-center gap-6 pt-2">
             <a
-              href="/catalog"
+              href={sitePath("/fotografias")}
               class="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-base)] transition-colors hover:bg-accent"
             >
-              Browse the catalogue
+              Freddy Fotografías
               <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            <a href="/about" class="text-[11px] uppercase tracking-[0.2em] text-faded transition-colors hover:text-ink">
-              Our workshop →
+            <a href={sitePath("/estudio")} class="text-[11px] uppercase tracking-[0.2em] text-faded transition-colors hover:text-ink">
+              Estudio Creativo →
             </a>
           </div>
         </div>
       </div>
       <div class="absolute bottom-10 right-10 hidden flex-col items-end gap-1 text-[10px] uppercase tracking-[0.3em] text-ink/70 md:flex">
-        <span>No. 04 — Arvid Lounge</span>
-        <span class="text-faded">Solid Walnut · 2025</span>
+        <span>No. 04 — Retrato editorial</span>
+        <span class="text-faded">Luz natural · 2025</span>
       </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-screen-xl px-6 pt-24 md:pt-32" aria-labelledby="servicios-principales">
+    <div class="mb-12 border-t border-line pt-10">
+      <p class="mb-4 text-[11px] uppercase tracking-[0.3em] text-faded">Nuestros servicios</p>
+      <h2 id="servicios-principales" class="max-w-[22ch] text-balance font-serif text-3xl leading-[1.02] md:text-5xl">
+        Una misma mirada, <span class="italic text-accent">dos experiencias.</span>
+      </h2>
+      <p class="mt-5 max-w-[58ch] leading-relaxed text-faded">
+        Elige la experiencia que mejor corresponde a tu historia. En ambas encontrarás dirección cercana, atención a la luz y fotografías pensadas para conservarse.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      <article class="group relative min-h-[520px] overflow-hidden rounded-[min(1vw,16px)] bg-paper">
+        <Image src={featured[0].images[0]} alt="Cobertura fotográfica de bodas y eventos" width={1200} height={1400} format="webp" loading="eager" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]" />
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 space-y-4 p-7 text-white md:p-10">
+          <p class="text-[10px] uppercase tracking-[0.3em] text-white/70">Bodas · Eventos</p>
+          <h3 class="font-serif text-4xl leading-none md:text-5xl">Freddy Fotografías</h3>
+          <p class="max-w-[44ch] text-sm leading-relaxed text-white/80">Coberturas documentales y cercanas para conservar la emoción, las personas y el pulso de cada celebración.</p>
+          <a href={sitePath("/fotografias")} class="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white">Conocer el servicio <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="group relative min-h-[520px] overflow-hidden rounded-[min(1vw,16px)] bg-paper">
+        <Image src={featured[1].images[0]} alt="Sesión fotográfica de estudio y exterior" width={1200} height={1400} format="webp" loading="eager" class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.03]" />
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 space-y-4 p-7 text-white md:p-10">
+          <p class="text-[10px] uppercase tracking-[0.3em] text-white/70">Estudio · Exteriores</p>
+          <h3 class="font-serif text-4xl leading-none md:text-5xl">Estudio Creativo</h3>
+          <p class="max-w-[44ch] text-sm leading-relaxed text-white/80">Retratos personales, de pareja, familia o marca diseñados alrededor de tu identidad y propósito.</p>
+          <a href={sitePath("/estudio")} class="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-white underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white">Explorar las sesiones <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
     </div>
   </section>
 
   <section class="mx-auto max-w-screen-xl px-6 pt-24 md:pt-32">
     <div class="mb-12 flex items-end justify-between gap-6 border-t border-line pt-10">
       <div>
-        <p class="mb-4 text-[11px] uppercase tracking-[0.3em] text-faded">Currently in the workshop</p>
+        <p class="mb-4 text-[11px] uppercase tracking-[0.3em] text-faded">Actualmente en el estudio</p>
         <h2 class="max-w-[20ch] text-balance font-serif text-3xl md:text-5xl">
-          A few pieces, <span class="italic text-accent">close to ready.</span>
+          Algunas sesiones, <span class="italic text-accent">listas para inspirarte.</span>
         </h2>
       </div>
       <a
-        href="/catalog"
+        href={sitePath("/estudio")}
         class="hidden items-center gap-2 whitespace-nowrap text-[11px] uppercase tracking-[0.2em] text-faded transition-colors hover:text-ink md:inline-flex"
       >
-        View all
+        Ver todas
         <span aria-hidden="true">→</span>
       </a>
     </div>
@@ -147,8 +182,8 @@ if (!solo) {
     </div>
 
     <div class="mt-10 flex justify-center md:hidden">
-      <a href="/catalog" class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-faded transition-colors hover:text-ink">
-        View the full catalogue →
+      <a href={sitePath("/estudio")} class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-faded transition-colors hover:text-ink">
+        Ver todas las sesiones →
       </a>
     </div>
   </section>
@@ -158,7 +193,7 @@ if (!solo) {
       <div class="grid items-center gap-10 md:grid-cols-12 md:gap-16">
         <div class="md:col-span-7 lg:col-span-8">
           <a
-            href={`/products/${solo.slug}`}
+            href={sitePath(`/products/${solo.slug}`)}
             class="group block aspect-[5/4] overflow-hidden rounded-[min(1vw,16px)] bg-paper md:aspect-[16/11]"
           >
             <Image
@@ -175,27 +210,27 @@ if (!solo) {
         <div class="space-y-6 md:col-span-5 lg:col-span-4">
           <p class="flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-faded">
             <span class="inline-block h-px w-8 bg-ink/40"></span>
-            The Monolith
+            Retrato de marca
           </p>
           <h2 class="text-balance font-serif text-4xl leading-[1.02] md:text-5xl">
-            One plank. <span class="italic text-accent">No hardware.</span>
+            Tu identidad, <span class="italic text-accent">en imágenes.</span>
           </h2>
           <p class="text-pretty leading-relaxed text-faded">{solo.description}</p>
           <dl class="grid grid-cols-2 gap-x-6 gap-y-3 border-t border-line pt-2 text-xs">
-            <dt class="pt-3 uppercase tracking-[0.2em] text-faded">Dimensions</dt>
+            <dt class="pt-3 uppercase tracking-[0.2em] text-faded">Duración</dt>
             <dd class="pt-3">{solo.dimensions}</dd>
-            <dt class="uppercase tracking-[0.2em] text-faded">Finish</dt>
+            <dt class="uppercase tracking-[0.2em] text-faded">Entrega</dt>
             <dd>{solo.finish}</dd>
-            <dt class="uppercase tracking-[0.2em] text-faded">Lead time</dt>
+            <dt class="uppercase tracking-[0.2em] text-faded">Plazo</dt>
             <dd>{solo.leadTime}</dd>
-            <dt class="uppercase tracking-[0.2em] text-faded">From</dt>
-            <dd class="tabular-nums">{formatPrice(solo.price)}</dd>
+            <dt class="uppercase tracking-[0.2em] text-faded">Sesión</dt>
+            <dd>Personalizada</dd>
           </dl>
           <a
-            href={`/products/${solo.slug}`}
+            href={sitePath(`/products/${solo.slug}`)}
             class="inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-base)] transition-colors hover:bg-accent"
           >
-            See the piece →
+            Ver la sesión →
           </a>
         </div>
       </div>
@@ -204,27 +239,27 @@ if (!solo) {
 
   <section class="mx-auto mt-32 max-w-screen-xl px-6 md:mt-48">
     <div class="border-t border-line pt-12">
-      <p class="mb-4 text-[11px] uppercase tracking-[0.3em] text-faded">Three woods, no more</p>
+      <p class="mb-4 text-[11px] uppercase tracking-[0.3em] text-faded">Dos formas de contar historias</p>
       <h2 class="mb-12 max-w-[22ch] text-balance font-serif text-3xl md:text-5xl">
-        We've spent years learning <span class="italic text-accent">three timbers</span>.
+        Una mirada consistente, <span class="italic text-accent">en cada contexto</span>.
       </h2>
       <div class="grid gap-x-8 gap-y-10 md:grid-cols-3">
         {
           [
             {
-              name: "European Oak",
-              tag: "Quiet · structural",
-              copy: "A single grade of slow-grown oak from managed forests in southern Sweden. Quarter-sawn for stability.",
+              name: "Bodas",
+              tag: "Emoción · memoria",
+              copy: "Una narración documental del día, desde los preparativos hasta la celebración, atenta a todo lo que ocurre entre ambos momentos.",
             },
             {
-              name: "Curved Ash",
-              tag: "Resilient · sprung",
-              copy: "A small reserve from the south coast, steam-bent over custom forms. Used only where the curve earns it.",
+              name: "Eventos",
+              tag: "Ambiente · personas",
+              copy: "Coberturas sociales y corporativas que conservan la energía del encuentro y producen imágenes útiles para volver a comunicarlo.",
             },
             {
-              name: "American Walnut",
-              tag: "Warm · figured",
-              copy: "Bought in single planks from a family mill in Pennsylvania. The grain decides the piece, not the other way around.",
+              name: "Estudio Creativo",
+              tag: "Dirección · identidad",
+              copy: "Sesiones en estudio o exteriores, pensadas alrededor de la persona, la luz y el propósito que tendrán las fotografías.",
             },
           ].map((material) => (
             <div class="space-y-3 pt-2">
@@ -238,50 +273,43 @@ if (!solo) {
     </div>
   </section>
 
-  <section class="mx-auto mt-32 max-w-screen-xl px-6 md:mt-48">
+  <section class="mx-auto mt-32 max-w-screen-xl px-6 md:mt-48" aria-labelledby="opiniones-title">
     <div class="border-t border-line pt-12">
-      <div class="mx-auto max-w-xl space-y-6 text-center">
-        <p class="text-[11px] uppercase tracking-[0.3em] text-faded">Stay informed</p>
-        <h2 class="text-balance font-serif text-3xl md:text-5xl">
-          New pieces, <span class="italic text-accent">one email at a time.</span>
-        </h2>
-        <p class="mx-auto max-w-[52ch] text-sm leading-relaxed text-faded">
-          We make slowly. When something is ready — or when we open the books for new commissions — we send a short note.
-        </p>
-
-        <form class="space-y-3 pt-4 text-left" data-newsletter-form>
-          <div class="flex flex-col gap-3 sm:flex-row">
-            <label class="sr-only" for="first-name">First name</label>
-            <input
-              id="first-name"
-              name="firstName"
-              type="text"
-              required
-              maxlength="80"
-              placeholder="First name"
-              class="flex-1 rounded-full bg-paper px-5 py-4 text-sm text-ink placeholder:text-faded/60 focus:outline-none focus:ring-1 focus:ring-ink disabled:opacity-50"
-            />
-            <label class="sr-only" for="email">Email address</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              placeholder="your@email.com"
-              class="flex-1 rounded-full bg-paper px-5 py-4 text-sm text-ink placeholder:text-faded/60 focus:outline-none focus:ring-1 focus:ring-ink disabled:opacity-50"
-            />
-          </div>
-          <button
-            type="submit"
-            class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-base)] transition-colors hover:bg-accent disabled:opacity-50"
-            data-newsletter-button
-          >
-            Notify me
-          </button>
-          <p class="hidden pt-2 text-center text-sm text-accent" data-newsletter-success aria-live="polite">
-            You're on the list. We'll be in touch.
-          </p>
-        </form>
+      <p class="mb-4 text-[11px] uppercase tracking-[0.3em] text-faded">Opiniones</p>
+      <h2 id="opiniones-title" class="max-w-[22ch] text-balance font-serif text-3xl leading-[1.02] md:text-5xl">
+        Historias vistas desde <span class="italic text-accent">el otro lado de la cámara.</span>
+      </h2>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {[
+          {
+            quote: "Freddy logró que olvidáramos la cámara. Las fotografías se sienten como nuestro día: cercanas, alegres y completamente nuestras.",
+            name: "María y Carlos",
+            service: "Boda",
+          },
+          {
+            quote: "La dirección fue clara y tranquila desde el primer momento. Recibí retratos naturales que realmente representan mi trabajo y personalidad.",
+            name: "Ana Lucía Ruiz",
+            service: "Retrato de marca",
+          },
+          {
+            quote: "Capturó el ambiente del evento sin interrumpirlo. Cada imagen cuenta algo y nos permitió revivir detalles que no habíamos visto ese día.",
+            name: "Sofía Mendoza",
+            service: "Evento social",
+          },
+        ].map((review) => (
+          <figure class="flex h-full flex-col rounded-[min(1vw,12px)] bg-paper p-7 md:p-8">
+            <div class="mb-6 flex gap-1 text-accent" aria-label="5 de 5 estrellas">
+              {Array.from({ length: 5 }).map(() => (
+                <svg viewBox="0 0 24 24" class="size-4" fill="currentColor" aria-hidden="true"><path d="m12 2.8 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 2.8Z"></path></svg>
+              ))}
+            </div>
+            <blockquote class="flex-1 text-pretty font-serif text-2xl leading-[1.2]">“{review.quote}”</blockquote>
+            <figcaption class="mt-8 border-t border-line pt-5">
+              <p class="text-sm font-medium">{review.name}</p>
+              <p class="mt-1 text-[10px] uppercase tracking-[0.25em] text-faded">{review.service}</p>
+            </figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   </section>
@@ -289,34 +317,14 @@ if (!solo) {
   <script is:inline type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Atelier Kō",
-    url: Astro.site?.href ?? "https://atelier-ko-topaz.vercel.app/",
-    slogan: "Furniture, made by hand",
+    name: "Freddy Fotografías",
+    url: new URL(import.meta.env.BASE_URL, Astro.site).href,
+    slogan: "Historias a través de la luz",
     address: {
       "@type": "PostalAddress",
-      addressRegion: "Småland",
-      addressCountry: "SE",
+      addressCountry: "NI",
     },
   })}></script>
 
-  <script is:inline>
-    const form = document.querySelector("[data-newsletter-form]");
-    if (form) {
-      const button = form.querySelector("[data-newsletter-button]");
-      const success = form.querySelector("[data-newsletter-success]");
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        button.disabled = true;
-        button.textContent = "Saving...";
-        window.setTimeout(() => {
-          form.reset();
-          button.disabled = false;
-          button.textContent = "Notify me";
-          success.classList.remove("hidden");
-        }, 450);
-      });
-    }
-  </script>
   </main>
 </BaseLayout>
