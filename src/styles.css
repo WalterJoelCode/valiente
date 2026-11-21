@@ -5,7 +5,7 @@
 @font-face {
   font-family: "Inter";
   font-style: normal;
-  font-display: swap;
+  font-display: block;
   font-weight: 400;
   src: url("./assets/fonts/inter-latin-ext-400-normal.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -16,7 +16,7 @@
 @font-face {
   font-family: "Inter";
   font-style: normal;
-  font-display: swap;
+  font-display: block;
   font-weight: 400;
   src: url("./assets/fonts/inter-latin-400-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
@@ -26,7 +26,7 @@
 @font-face {
   font-family: "Inter";
   font-style: normal;
-  font-display: swap;
+  font-display: block;
   font-weight: 500;
   src: url("./assets/fonts/inter-latin-ext-500-normal.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -37,7 +37,7 @@
 @font-face {
   font-family: "Inter";
   font-style: normal;
-  font-display: swap;
+  font-display: block;
   font-weight: 500;
   src: url("./assets/fonts/inter-latin-500-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
@@ -47,7 +47,7 @@
 @font-face {
   font-family: "Instrument Serif";
   font-style: normal;
-  font-display: swap;
+  font-display: block;
   font-weight: 400;
   src: url("./assets/fonts/instrument-serif-latin-ext-400-normal.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -58,7 +58,7 @@
 @font-face {
   font-family: "Instrument Serif";
   font-style: normal;
-  font-display: swap;
+  font-display: block;
   font-weight: 400;
   src: url("./assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
@@ -68,7 +68,7 @@
 @font-face {
   font-family: "Instrument Serif";
   font-style: italic;
-  font-display: swap;
+  font-display: block;
   font-weight: 400;
   src: url("./assets/fonts/instrument-serif-latin-ext-400-italic.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
@@ -79,7 +79,7 @@
 @font-face {
   font-family: "Instrument Serif";
   font-style: italic;
-  font-display: swap;
+  font-display: block;
   font-weight: 400;
   src: url("./assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
@@ -163,6 +163,109 @@
   img {
     max-width: 100%;
   }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+  color: var(--faded);
+  font-size: 0.6875rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: color-mix(in oklab, var(--ink) 40%, transparent);
+}
+
+.skeleton-card {
+  display: flex;
+  min-height: 25rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--paper) 75%, transparent), transparent 70%);
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.skeleton-card:hover { border-color: var(--ink); background-color: var(--paper); transform: translateY(-3px); }
+.skeleton-card p { max-width: 38ch; color: var(--faded); line-height: 1.65; }
+.skeleton-index { align-self: flex-start; color: var(--accent); font-size: 0.6875rem; letter-spacing: 0.25em; }
+.skeleton-link { margin-top: 1rem; color: var(--faded); font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 180ms ease; }
+.skeleton-card:hover .skeleton-link { color: var(--accent); }
+
+.image-skeleton {
+  position: absolute;
+  inset: 1rem 1rem auto;
+  height: auto;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: color-mix(in oklab, var(--paper) 78%, var(--base));
+}
+
+.image-skeleton::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(105deg, transparent 25%, color-mix(in oklab, white 55%, transparent) 50%, transparent 75%);
+  transform: translateX(-100%);
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer { to { transform: translateX(100%); } }
+
+.contact-trigger { color: inherit; }
+.contact-modal { position: fixed; inset: 0; width: min(42rem, calc(100% - 2rem)); max-width: none; max-height: calc(100dvh - 2rem); margin: auto; padding: 0; border: 0; border-radius: 1rem; background: var(--base); color: var(--ink); box-shadow: 0 1.5rem 5rem #27272a33; }
+.contact-modal[open] { animation: contact-fade-in 220ms ease-out both; }
+.contact-modal.is-closing { animation: contact-fade-out 220ms ease-in both; }
+.contact-modal::backdrop { background: #27272a99; backdrop-filter: blur(5px); }
+.contact-modal__panel { padding: 2rem; }
+.contact-modal__close { width: 2.5rem; height: 2.5rem; border: 1px solid var(--line); border-radius: 9999px; font-size: 1.5rem; line-height: 1; }
+.contact-field { display: grid; gap: 0.5rem; color: var(--faded); font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.contact-field input, .contact-field select, .contact-field textarea { width: 100%; border: 1px solid var(--line); border-radius: 0.5rem; background: var(--paper); padding: 0.8rem 0.9rem; color: var(--ink); font-size: 0.9rem; letter-spacing: normal; text-transform: none; }
+.contact-field input:focus, .contact-field select:focus, .contact-field textarea:focus { border-color: var(--ink); outline: 2px solid color-mix(in oklab, var(--accent) 35%, transparent); outline-offset: 2px; }
+.contact-service-info { display: grid; gap: 0.3rem; border: 1px solid var(--line); border-radius: 0.75rem; padding: 1rem; background: var(--paper); font-size: 0.8rem; color: var(--faded); }
+.contact-service-info strong { color: var(--ink); font-size: 0.95rem; }
+.contact-service-info p { margin-top: 0.25rem; line-height: 1.5; }
+.social-rail { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40; display: flex; flex-direction: column; gap: 0.35rem; }
+.social-rail a { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 1px solid var(--line); border-radius: 9999px; background: color-mix(in oklab, var(--base) 88%, transparent); color: var(--faded); backdrop-filter: blur(8px); transition: color 180ms ease, border-color 180ms ease, transform 180ms ease; }
+.social-rail svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.social-rail a:nth-child(2) svg, .social-rail a:nth-child(3) svg { fill: currentColor; stroke: none; }
+.social-rail a:hover { border-color: var(--ink); color: var(--accent); transform: translateX(-2px); }
+.contact-channel { position: relative; display: flex; min-height: 8rem; flex-direction: column; justify-content: flex-end; gap: 0.35rem; border: 1px solid var(--line); border-radius: 0.75rem; padding: 1rem; transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease; }
+.contact-channel:hover { border-color: var(--ink); background: var(--paper); transform: translateY(-2px); }
+.contact-channel span { font-family: var(--font-serif); font-size: 1.65rem; line-height: 1; }
+.contact-channel small { color: var(--faded); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.contact-channel b { position: absolute; right: 0.85rem; top: 0.75rem; color: var(--accent); font-weight: 400; }
+.map-skeleton { position: relative; display: grid; width: min(100%, 40rem); aspect-ratio: 1; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 1rem; background: repeating-linear-gradient(135deg, var(--paper), var(--paper) 1px, color-mix(in oklab, var(--paper) 75%, var(--base)) 1px, color-mix(in oklab, var(--paper) 75%, var(--base)) 3rem); color: var(--faded); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; }
+.map-skeleton::after { position: absolute; inset: 0; content: ""; background: linear-gradient(105deg, transparent 25%, color-mix(in oklab, white 40%, transparent) 50%, transparent 75%); transform: translateX(-100%); animation: skeleton-shimmer 1.8s ease-in-out infinite; }
+.skeleton-collage { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-auto-rows: 7rem; gap: 0.6rem; }
+.skeleton-collage .image-skeleton { position: relative; inset: auto; width: 100%; height: 100%; aspect-ratio: auto; }
+.skeleton-collage .collage-item--wide { grid-row: span 2; }
+
+@media (max-width: 640px) { .contact-modal__panel { padding: 1.5rem; } }
+@media (max-width: 640px) { .social-rail { right: 0.75rem; bottom: 0.75rem; } .social-rail a { width: 2rem; height: 2rem; } }
+
+@keyframes contact-fade-in { from { opacity: 0; transform: translateY(0.75rem) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes contact-fade-out { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(0.5rem) scale(0.98); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .image-skeleton::after { animation: none; }
+  .contact-modal[open], .contact-modal.is-closing { animation: none; }
 }
 
 @utility font-serif {

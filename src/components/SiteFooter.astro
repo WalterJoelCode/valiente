@@ -3,31 +3,31 @@ const year = new Date().getFullYear();
 import { sitePath } from "@/utils/paths.js";
 ---
 
-<footer id="studio" class="mt-32 border-t border-line py-24">
-  <div class="mx-auto grid max-w-screen-xl grid-cols-1 gap-12 px-6 md:grid-cols-3">
-    <div class="space-y-4">
+<footer id="studio" class="mt-20 border-t border-line py-12">
+  <div class="mx-auto grid max-w-screen-xl grid-cols-1 gap-8 px-6 md:grid-cols-3">
+    <div class="space-y-2">
       <div class="font-serif text-lg italic tracking-tight">Freddy Fotografías</div>
-      <p class="max-w-[30ch] text-sm leading-relaxed text-faded">
+      <p class="max-w-[30ch] text-xs leading-relaxed text-faded">
         Fotografía de autor y sesiones creadas con sensibilidad, calma e intención.
       </p>
     </div>
-    <div class="space-y-4">
+    <div class="space-y-2">
       <h2 class="text-xs font-medium uppercase tracking-widest">Consultas</h2>
-      <ul class="space-y-2 text-sm">
+      <ul class="space-y-1 text-xs">
         <li><a href={sitePath("/contacto#contacto")} class="text-faded transition-colors hover:text-ink">Reservar una sesión</a></li>
         <li><a href={sitePath("/contacto#contacto")} class="text-faded transition-colors hover:text-ink">Proyectos editoriales</a></li>
         <li><a href={sitePath("/contacto#contacto")} class="text-faded transition-colors hover:text-ink">Visitas al estudio</a></li>
       </ul>
     </div>
-    <div class="space-y-4">
-      <h2 class="text-xs font-medium uppercase tracking-widest">Sígueme</h2>
-      <ul class="space-y-2 text-sm">
-        <li><a href="https://www.instagram.com/" class="text-faded transition-colors hover:text-ink">Instagram</a></li>
+    <div class="space-y-2">
+      <h2 class="text-xs font-medium uppercase tracking-widest">Atención</h2>
+      <ul class="space-y-1 text-xs">
+        <li><a href="mailto:contacto@freddyvaliente.com" class="text-faded transition-colors hover:text-ink">contacto@freddyvaliente.com</a></li>
         <li><a href={sitePath("/contacto")} class="text-faded transition-colors hover:text-ink">Contacto</a></li>
       </ul>
     </div>
   </div>
-  <div class="mx-auto mt-16 max-w-screen-xl px-6 text-[10px] uppercase tracking-[0.2em] text-faded">
+  <div class="mx-auto mt-8 max-w-screen-xl px-6 text-[10px] uppercase tracking-[0.2em] text-faded">
     © {year} Freddy Fotografías — Todos los derechos reservados.
   </div>
 </footer>

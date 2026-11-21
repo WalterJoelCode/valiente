@@ -4,13 +4,6 @@ collection: Estudio Creativo — Exteriores
 category: Exteriores
 material: Luz natural
 shortDescription: Retratos en una locación con significado
-dimensions: 60–90 minutos
-finish: Selección editada
-leadTime: 7–10 días
-images:
-  - ../../assets/p-arvid-3.jpg
-  - ../../assets/p-arvid-1.jpg
-  - ../../assets/p-arvid-2.jpg
 order: 2
 ---
 

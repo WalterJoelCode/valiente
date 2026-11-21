@@ -1,0 +1,66 @@
+<dialog id="contact-modal" class="contact-modal" data-contact-modal aria-labelledby="contact-modal-title">
+  <div class="contact-modal__panel">
+    <div class="flex items-start justify-between gap-6">
+      <div><p class="mb-3 text-[10px] uppercase tracking-[0.3em] text-faded">Primer paso</p><h2 id="contact-modal-title" class="font-serif text-4xl leading-none md:text-5xl">Hablemos de tu idea.</h2></div>
+      <button type="button" class="contact-modal__close" data-contact-close aria-label="Cerrar formulario">×</button>
+    </div>
+    <p class="mt-5 max-w-[48ch] text-sm leading-relaxed text-faded">Completa lo esencial y continúa la conversación por WhatsApp.</p>
+    <form class="mt-8 space-y-5" data-contact-form autocomplete="off">
+      <div class="grid gap-5 sm:grid-cols-2">
+        <label class="contact-field">Nombre<input name="nombre" required autocomplete="off" placeholder="Tu nombre" /></label>
+        <label class="contact-field">Tipo de evento<select name="servicio" required autocomplete="off">
+          <option value="">Selecciona una opción</option><option>Boda</option><option>Evento</option><option>Retrato personal</option><option>Retrato de pareja o familia</option><option>Proyecto de marca</option><option>Otros</option>
+        </select></label>
+        <label class="contact-field">Fecha o temporada<input name="fecha" autocomplete="off" placeholder="Ej. Octubre 2026" /></label>
+        <label class="contact-field">Lugar aproximado<input name="lugar" autocomplete="off" placeholder="Ciudad o locación" /></label>
+      </div>
+      <label class="contact-field">Cuéntame un poco más<textarea name="detalle" rows="4" autocomplete="off" placeholder="Qué estás imaginando, cuántas personas participan o cualquier detalle útil"></textarea></label>
+      <button type="submit" class="inline-flex w-full items-center justify-center gap-3 rounded-full bg-ink px-6 py-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--color-base)] transition-colors hover:bg-accent">Cotizar por WhatsApp <span aria-hidden="true">↗</span></button>
+    </form>
+  </div>
+</dialog>
+
+<script is:inline>
+  (() => {
+    const modal = document.querySelector("[data-contact-modal]");
+    const form = document.querySelector("[data-contact-form]");
+    if (!modal || !form) return;
+    let lastFocused;
+    let closeTimer;
+
+    const open = (trigger) => {
+      if (modal.open && !modal.classList.contains("is-closing")) return;
+      clearTimeout(closeTimer);
+      modal.classList.remove("is-closing");
+      lastFocused = trigger instanceof HTMLElement ? trigger : document.activeElement;
+      modal.showModal();
+      document.body.style.overflow = "hidden";
+      modal.querySelector("input")?.focus();
+    };
+    const close = () => {
+      if (!modal.open || modal.classList.contains("is-closing")) return;
+      modal.classList.add("is-closing");
+      closeTimer = window.setTimeout(() => {
+        modal.close();
+        modal.classList.remove("is-closing");
+        document.body.style.overflow = "";
+        if (lastFocused instanceof HTMLElement) lastFocused.focus({ preventScroll: true });
+      }, 220);
+    };
+
+    document.addEventListener("click", (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const trigger = target?.closest("[data-contact-open]");
+      if (trigger) { event.preventDefault(); open(trigger); return; }
+      if (target?.closest("[data-contact-close]") || target === modal) close();
+    });
+    modal.addEventListener("cancel", (event) => { event.preventDefault(); close(); });
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const message = ["Hola Freddy, me gustaría cotizar una sesión.", `Nombre: ${data.get("nombre")}`, `Tipo de evento: ${data.get("servicio")}`, data.get("fecha") && `Fecha o temporada: ${data.get("fecha")}`, data.get("lugar") && `Lugar: ${data.get("lugar")}`, data.get("detalle") && `Detalles: ${data.get("detalle")}`].filter(Boolean).join("\n");
+      window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+      close();
+    });
+  })();
+</script>
