@@ -30,6 +30,9 @@ jobs:
       - name: Validar el proyecto
         run: npm run check
       - name: Compilar el sitio
+        env:
+          SITE: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          BASE_PATH: /${{ github.event.repository.name }}
         run: npm run build
       - name: Preparar GitHub Pages
         uses: actions/configure-pages@v5

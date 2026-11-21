@@ -40,13 +40,14 @@ const navItems = [
       }
     </div>
     <div class="flex items-center gap-3">
-      <a
-        href={sitePath("/contacto#contacto")}
+      <button
+        type="button"
         class="hidden items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--color-base)] transition-colors hover:bg-accent md:inline-flex"
+        data-contact-open
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>
-        Hablemos
-      </a>
+        <span>Hablemos</span>
+      </button>
       <button
         type="button"
         class="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:text-accent md:hidden"
@@ -118,10 +119,10 @@ const navItems = [
               </a>
             ))
           }
-          <a href={sitePath("/contacto#contacto")} class="mt-4 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--color-base)] transition-colors hover:bg-accent" data-mobile-menu-link>
+          <button type="button" class="mt-4 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--color-base)] transition-colors hover:bg-accent" data-mobile-menu-link data-contact-open>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>
             Hablemos
-          </a>
+          </button>
         </div>
 
         <div class="mt-auto space-y-2 text-sm">

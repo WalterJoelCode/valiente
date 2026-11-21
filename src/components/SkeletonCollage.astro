@@ -1,0 +1,6 @@
+---
+const { label = "Galería en preparación" } = Astro.props;
+---
+<div class="skeleton-collage" aria-label={label}>
+  {Array.from({ length: 5 }).map((_, index) => <div class:list={["image-skeleton", "collage-item", index === 0 && "collage-item--wide"]} aria-hidden="true"></div>)}
+</div>

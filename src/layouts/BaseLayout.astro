@@ -2,19 +2,21 @@
 import "../styles.css";
 import SiteFooter from "@/components/SiteFooter.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
+import ContactModal from "@/components/ContactModal.astro";
+import SocialRail from "@/components/SocialRail.astro";
 import { sitePath } from "@/utils/paths.js";
+import interRegular from "@/assets/fonts/inter-latin-400-normal.woff2";
+import instrumentRegular from "@/assets/fonts/instrument-serif-latin-400-normal.woff2";
 
 const {
   title = "Freddy Fotografías — Fotografía con intención",
   description = "Fotografía de autor, sesiones de estudio y una mirada honesta a cada historia.",
-  image,
   noindex = false,
   includeHeader = true,
   includeFooter = true,
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
-const ogImage = image ? new URL(image.src ?? image, Astro.site ?? Astro.url.origin).href : undefined;
 ---
 
 <!doctype html>
@@ -28,6 +30,8 @@ const ogImage = image ? new URL(image.src ?? image, Astro.site ?? Astro.url.orig
     <meta name="theme-color" content="#f8f7f4" />
     <link rel="canonical" href={canonicalUrl.href} />
     <link rel="icon" type="image/svg+xml" href={sitePath("/favicon.svg")} />
+    <link rel="preload" href={interRegular} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={instrumentRegular} as="font" type="font/woff2" crossorigin />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
 
     <meta property="og:title" content={title} />
@@ -35,11 +39,9 @@ const ogImage = image ? new URL(image.src ?? image, Astro.site ?? Astro.url.orig
     <meta property="og:site_name" content="Freddy Fotografías" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl.href} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {ogImage && <meta name="twitter:image" content={ogImage} />}
 
   </head>
   <body class="bg-base text-ink">
@@ -53,6 +55,8 @@ const ogImage = image ? new URL(image.src ?? image, Astro.site ?? Astro.url.orig
     <div>
       <slot />
     </div>
+    <ContactModal />
+    <SocialRail />
     {includeFooter && <SiteFooter />}
   </body>
 </html>
